@@ -24,13 +24,12 @@ apply plugin:"groovy"
 
 repositories {
     mavenLocal()
-    mavenCentral()
-    maven { url "https://jcenter.bintray.com" }
+    jcenter()
 }
 
 dependencyManagement {
     imports {
-        mavenBom 'io.micronaut:bom:1.0.0.M1'
+        mavenBom 'io.micronaut:bom:1.0.0.BUILD-SNAPSHOT'
     }
 }
 

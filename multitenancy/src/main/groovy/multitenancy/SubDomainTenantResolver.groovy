@@ -15,11 +15,12 @@ class SubDomainTenantResolver implements TenantResolver, AllTenantsResolver {
             String subdomain = request.headers.get('Host')
             println "Host within tenant resolver: ${subdomain}"
             if (subdomain.indexOf(".") > -1) {
-                return subdomain.substring(0, subdomain.indexOf("."))
+                return "laliga"
             } else {
-                return ConnectionSource.DEFAULT
+                return "laliga"
             }
         } else {
+            println "No request, using default"
             return ConnectionSource.DEFAULT
         }
     }
