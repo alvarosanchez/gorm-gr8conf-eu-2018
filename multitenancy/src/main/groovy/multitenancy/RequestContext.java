@@ -29,14 +29,12 @@ public class RequestContext implements Runnable {
         HttpRequest existing = REQUEST.get();
         boolean isSet = false;
         try {
-//            System.out.println("storing request in " + Thread.currentThread().getName());
             if(existing == null) {
                 isSet = true;
                 REQUEST.set(request);
             }
             runnable.run();
         } finally {
-//            System.out.println("removing request from " + Thread.currentThread().getName());
             if(isSet) {
                 REQUEST.remove();
             }
@@ -45,11 +43,9 @@ public class RequestContext implements Runnable {
 
     static <T> T with(HttpRequest request, Callable<T> runnable) throws Exception {
         try {
-//            System.out.println("storing request in " + Thread.currentThread().getName());
             REQUEST.set(request);
             return runnable.call();
         } finally {
-//            System.out.println("removing request from " + Thread.currentThread().getName());
             REQUEST.remove();
         }
     }

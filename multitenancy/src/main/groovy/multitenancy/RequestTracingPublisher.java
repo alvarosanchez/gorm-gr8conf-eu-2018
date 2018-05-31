@@ -18,17 +18,13 @@ public class RequestTracingPublisher implements Publisher<MutableHttpResponse<?>
 
     @Override
     public void subscribe(Subscriber<? super MutableHttpResponse<?>> subscriber) {
-//        System.out.println("RequestTracingPublisher. RequestContext.current() = " + RequestContext.current());
         RequestContext.with(request, new Runnable() {
             @Override
             public void run() {
-//                System.out.println("RequestTracingPublisher.run RequestContext.current() = " + RequestContext.current());
                 actual.subscribe(new Subscriber<MutableHttpResponse<?>>() {
                     @Override
                     public void onSubscribe(Subscription s) {
-//                        System.out.println("RequestTracingPublisher.actual.onSubscribe() = " + RequestContext.current());
                         RequestContext.with(request, () -> {
-//                            System.out.println("RequestTracingPublisher.actual.within.onSubscribe() = " + RequestContext.current());
                             subscriber.onSubscribe(s);
                         });
 

@@ -13,14 +13,12 @@ class SubDomainTenantResolver implements TenantResolver, AllTenantsResolver {
         HttpRequest request = RequestContext.current()
         if (request) {
             String subdomain = request.headers.get('Host')
-            println "Host within tenant resolver: ${subdomain}"
             if (subdomain.indexOf(".") > -1) {
-                return "laliga"
+                return subdomain.substring(0, subdomain.indexOf("."))
             } else {
-                return "laliga"
+                return ConnectionSource.DEFAULT
             }
         } else {
-            println "No request, using default"
             return ConnectionSource.DEFAULT
         }
     }
