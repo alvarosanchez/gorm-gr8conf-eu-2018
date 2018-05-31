@@ -1,5 +1,0 @@
-profile: service
-defaultPackage: data.services
----
-testFramework: spock
-sourceLanguage: groovy
