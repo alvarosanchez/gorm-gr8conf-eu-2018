@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: multitenancy
+---
+testFramework: spock
+sourceLanguage: groovy

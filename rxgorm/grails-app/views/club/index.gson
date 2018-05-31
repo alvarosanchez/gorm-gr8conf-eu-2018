@@ -1,0 +1,8 @@
+import rxgorm.Club
+
+model {
+	Iterable<Club> clubList
+}
+
+json tmpl.club(clubList ?: [])
+

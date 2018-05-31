@@ -1,0 +1,7 @@
+import rxgorm.Club
+
+model {
+	Club club
+}
+
+json g.render(club, [resolveTemplate: false])
